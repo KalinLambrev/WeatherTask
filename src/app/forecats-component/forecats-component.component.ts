@@ -1,3 +1,4 @@
+import { CityForecast } from './../city-forecast';
 import { CityWeatherService } from './../city-weather.service';
 import { Component, OnInit } from '@angular/core';
 import { CityWeather } from '../city-weather';
@@ -21,16 +22,20 @@ export class ForecatsComponentComponent implements OnInit {
   humidity;
   time;
   date;
-  tempForecastC;
-  textFore;
-  iconForecast;
   info: CityWeather = this.weather.getCityInfo();
+  forecastCity: CityForecast = this.weather.getForecastInfo();
+  isShown = false;
+  buttonDisabler = false;
+  isMobile: boolean;
 
   ngOnInit() {
     this.getInfo();
+    this.checkResolution();
   }
 
   getInfo() {
+    this.isShown = false;
+    this.buttonDisabler = false;
     this.cityName = this.info.location.name;
     this.localtime = this.info.location.localtime;
     this.icon = this.info.current.condition.icon;
@@ -39,7 +44,27 @@ export class ForecatsComponentComponent implements OnInit {
     this.wind = this.info.current.wind_kph;
     this.tempFeel = this.info.current.feelslike_c;
     this.humidity = this.info.current.humidity;
-    // this.time = this.info.forecast.forecastday[0].date;
+  }
+
+  getForecast(city: string) {
+    const time = this.forecastCity.location.localtime.toString();
+    return this.time = time.slice(11),
+    this.date = time.slice(0, 11),
+    this.weather.getCityForecast(city),
+    this.buttonDisabler = true,
+    this.isShown = true;
+  }
+  displaytime() {
+    const time = this.forecastCity.location.localtime.toString();
+    return time.slice(11);
+  }
+
+  checkResolution() {
+    if (this.weather.getIsMobileResolution()) {
+      return this.isMobile = true;
+    } else {
+      return this.isMobile = false;
+    }
   }
 
 }

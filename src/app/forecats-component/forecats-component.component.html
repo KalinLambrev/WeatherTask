@@ -1,60 +1,66 @@
 <div class="container">
-    <div class="row justify-content-md-center">
-        <div class="text-center col-12"><span style="padding: 10px; border:solid black 1px;">Logo</span></div>
-    </div>
-    <div class="row justify-content-md-center">
-        <div class="col-6 col-md-6">
-            <h1>{{cityName}}</h1>
+    <div [ngClass]="{'d-none d-md-block': buttonDisabler}">
+        <div class="row justify-content-md-center">
+            <div class="text-center col-12 logo1">
+                <span class="logo">Logo</span>
+            </div>
         </div>
-        <div class="col-6 col-md-6">
-            <h1><img src={{icon}}> {{tempC}}</h1>
+        <div class="row justify-content-md-center">
+            <div class="col-6 col-md-6 leftClass">
+                <span><h1>{{cityName}}</h1></span>
+            </div>
+            <div class="col-6 col-md-6 rightClass">
+                <span><h1><img src={{icon}}> {{tempC}} &#176;</h1></span>
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-md-center">
-        <div class="col-6 col-md-6">
-            <h3>{{localtime}}</h3>
-        </div>
-        <div class="col-6 col-md-6">
-            <h3>{{text}}</h3>
-        </div>
-    </div>
-    <div class="row justify-content-md-center">
-        <div class="col-4 col-md-4">
-            <button class="d-none d-lg-block">Today</button>
-        </div>
-        <div class="col-4 col-md-4">
-            <button>48 Hourws Forecast</button>
+        <div class="row justify-content-md-center">
+            <div class="col-6 col-md-6 leftClass">
+                <span><h3>{{localtime}}</h3></span>
+            </div>
+            <div class="col-6 col-md-6 rightClass">
+                <span><h3>{{text}}</h3></span>
+            </div>
         </div>
     </div>
     <div class="row justify-content-md-center">
-        <div class="col-6 col-md-6">
+        <div class="col-6 col-md-6 d-md-block rightClass topMrg">
+            <button class="btn btn-success button1" (click)="getInfo()" [disabled]="!buttonDisabler">Today</button>
+        </div>
+        <div class="col-6 col-md-6 leftClass topMrg">
+            <button class="btn btn-success button2" (click)="getForecast(cityName)" [disabled]="buttonDisabler">48 Hourws Forecast</button>
+        </div>
+    </div>
+    <div [hidden]="isShown" class="row justify-content-md-center">
+        <div class="col-6 col-md-6 info">
             <p>Feels like: </p>
             <p>Wind: km/h</p>
             <p>Humidity: </p>
         </div>
-        <div class="col-6 col-md-6">
-            <p>{{tempFeel}}</p>
+        <div class="col-6 col-md-6 info">
+            <p>{{tempFeel}} &#176;</p>
             <p>{{wind}} km/h</p>
-            <p>H{{humidity}}</p>
+            <p>{{humidity}} %</p>
         </div>
     </div>
-    <div class="d-none d-lg-block row justify-content-md-center" [hidden]="">
-        <div class="col-12 col-md-12">
-            <div class="col-6 col-md-6">
-                <h1>{{time}}</h1>
+    <div *ngFor="let day of forecastCity.forecast.forecastday">
+        <div [ngClass]="{'d-none': !buttonDisabler}" class=" d-md-block row justify-content-md-center" *ngIf="isShown===true" [hidden]="false">
+            <div class="row justify-content-md-center">
+                <div class="col-6 col-md-6 leftClass info2 hourPad botMrg">
+                    <h5>{{displaytime()}}</h5>
+                </div>
+                <div class="col-6 col-md-6 rightClass info2 botMrg">
+                    <h5><img src={{day.day.condition.icon}}>{{day.day.maxtemp_c}}&#176;/{{day.day.mintemp_c}}&#176;</h5>
+                </div>
             </div>
-            <div class="col-6 col-md-6">
-                <h1><img src={{iconForecast}}>{{tempForecastC}}</h1>
+            <div class="row justify-content-md-center">
+                <div class="col-6 col-md-6 leftClass info2">
+                    <h6>{{day.date}}</h6>
+                </div>
+                <div class="col-6 col-md-6 rightClass info2">
+                    <h6>{{day.day.condition.text}}</h6>
+                </div>
             </div>
-        </div>
-        <div class="col-6 col-md-6">
-            <div class="col-6 col-md-6">
-                <h3>{{date}}</h3>
-            </div>
-            <div class="col-6 col-md-6">
-                <h3>{{textFore}}</h3>
-            </div>
-            <hr>
+            <hr class="mrg" />
         </div>
     </div>
 </div>

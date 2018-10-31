@@ -1,9 +1,30 @@
-#logo {
-    left: 408px;
-    top: 112px;
-    width: 213px;
-    height: 93px;
-    opacity: 1;
-    position: absolute;
+.logo1 {
+    margin-top: 100px;
+    margin-bottom: 160px;
+}
+
+.logo {
+    margin-top: 100px;
+    margin-bottom: 160px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
     border: 1px solid black;
+}
+
+.paragraph {
+    margin-bottom: 1px;
+}
+
+.input {
+    font-size: 25px;
+}
+
+.button {
+    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
