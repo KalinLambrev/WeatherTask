@@ -1,0 +1,20 @@
+<div [hidden]="isShown" class="container" style="background-color: aliceblue">
+    <div class="row justify-content-md-center">
+        <div class="col-12 text-center">
+            Logo
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-12 col-md-12">
+            <p><label for="inputValue"> Name of a city and press search:</label></p>
+            <input class="" style="width: 100%; margin-bottom: 20px;" type="text" #city id="inputValue" (keypress)="onSubmit()">
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-12 text-center">
+            <button style="margin-bottom: 20px;" type="button" id="searchBtn" [disabled]="inputValue" class="btn btn-primary btn-large" (click)="searchCity(city.value)">SEARCH</button>
+        </div>
+    </div>
+</div>
+<div [hidden]="!isShown" class="container" style="background-color: aliceblue">
+    THIS IS A TEST FOR MOBILE</div>

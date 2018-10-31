@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="text-center col-12"><span style="padding: 10px; border:solid black 1px;">Logo</span></div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-6 col-md-6">
+            <h1>{{cityName}}</h1>
+        </div>
+        <div class="col-6 col-md-6">
+            <h1><img src={{icon}}> {{tempC}}</h1>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-6 col-md-6">
+            <h3>{{localtime}}</h3>
+        </div>
+        <div class="col-6 col-md-6">
+            <h3>{{text}}</h3>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-4 col-md-4">
+            <button class="d-none d-lg-block">Today</button>
+        </div>
+        <div class="col-4 col-md-4">
+            <button>48 Hourws Forecast</button>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-6 col-md-6">
+            <p>Feels like: </p>
+            <p>Wind: km/h</p>
+            <p>Humidity: </p>
+        </div>
+        <div class="col-6 col-md-6">
+            <p>{{tempFeel}}</p>
+            <p>{{wind}} km/h</p>
+            <p>H{{humidity}}</p>
+        </div>
+    </div>
+    <div class="d-none d-lg-block row justify-content-md-center" [hidden]="">
+        <div class="col-12 col-md-12">
+            <div class="col-6 col-md-6">
+                <h1>{{time}}</h1>
+            </div>
+            <div class="col-6 col-md-6">
+                <h1><img src={{iconForecast}}>{{tempForecastC}}</h1>
+            </div>
+        </div>
+        <div class="col-6 col-md-6">
+            <div class="col-6 col-md-6">
+                <h3>{{date}}</h3>
+            </div>
+            <div class="col-6 col-md-6">
+                <h3>{{textFore}}</h3>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
